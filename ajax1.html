@@ -8,6 +8,8 @@
 </head>
 <body>
   <button id="button">Get Text File</button>
+  <br><br>
+  <div id="text"></div>
  
   <script>
     //Create an event listner and run a function called loadText
@@ -28,20 +30,38 @@
         //console.log(xhr);
         xhr.open('GET','http://127.0.0.1:5500/sample.txt',true);
 
-        //xhr.onload = function(){
-        //  //Check status of request, if = 200 then the server is ok and we can continue
-        //  if(this.status ==200){
-        //   //console.log(this.responseText);
-        //  }
-        //}
+        //After open READYSTATE 1
+        console.log('READYSTATE: ',xhr.readyState);
+        
+        xhr.onprogress=function(){
 
-        // onreadystatechange
-        xhr.onreadystatechange = function(){
-          if(this.readyState == 4 && this.status == 200){
-            console.log(this.responseText);
-          };
+          //OPTIONAL use of loaders READYSTATE 3
+          console.log('READYSTATE: ',xhr.readyState);
+        };
 
-        };    
+        xhr.onload = function(){
+          // Onload READYSTATE 4
+          // NOTE: onload isn't going to run unleass it is ready.
+           console.log('READYSTATE: ',xhr.readyState);
+
+          //Check status of request, if = 200 then the server is ok and we can continue
+          if(this.status ==200){
+            //console.log(this.responseText);
+            document.getElementById('text').innerHTML = this.responseText;
+          }
+        }
+
+        // Error Capturing
+        xhr.onerror = function(){
+          console.log('Request Error....');
+        }
+
+        //xhr.onreadystatechange = function(){
+        //// console.log('READYSTATE: ',xhr.readyState);
+        //if(this.readyState == 4 && this.status == 200){
+        //  //console.log(this.responseText);
+        // };
+        //};    
 
 
         // Sends request
