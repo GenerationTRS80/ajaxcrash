@@ -28,7 +28,7 @@
 
         //OPEN - type,url/file, set to asynchronous
         //console.log(xhr);
-        xhr.open('GET','http://127.0.0.1:5500/sample.txt',true);
+        xhr.open('GET','http://127.0.0.1:5500/sample2.txt',true);
 
         //After open READYSTATE 1
         console.log('READYSTATE: ',xhr.readyState);
@@ -48,6 +48,8 @@
           if(this.status ==200){
             //console.log(this.responseText);
             document.getElementById('text').innerHTML = this.responseText;
+          }else if(this.status=404){
+            document.getElementById('text').innerHTML = 'Not Found';            
           }
         }
 
