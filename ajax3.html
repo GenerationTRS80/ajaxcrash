@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Ajax-3 External Api</title>
+  <style>
+    .user{
+      display: flex;
+      background: #f4f4f4;
+      padding:10px;
+      margin-button:10px;
+    }
+
+    .user ul{
+      list-style: none;
+    }
+  </style>
 </head>
 <body>
   <button id="button">Load GitHub User</button>
@@ -33,8 +45,8 @@
           var output ='';
           for(var i in users){
             output +=
-            '<div class="users">'+
-            '<img scr="'+users[i].avatar_url+'" width="70" height="70">' +
+            '<div class="user">'+
+            '<img src="'+users[i].avatar_url+'" width="70" height="70">' +
             '<ul>' +
             '<li>ID: '+users[i].id+'</li>'+
             '<li>ID: '+users[i].login+'</li>'+
