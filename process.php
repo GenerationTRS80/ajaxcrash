@@ -1,5 +1,4 @@
 <?php
-
 echo 'Processing...';
 
 //Check for GET variable
